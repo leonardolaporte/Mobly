@@ -15,6 +15,6 @@ Passos para deploy:
 	<li>Execute a URL de importaçao de posts: <i>{URL}/posts/import</i></li>
 	<li>URL da API para retornar todos os usuários: <i>{URL}/users</i></li>
 	<li>URL da API para retornar um usuário específico: <i>{URL}/users/{id}</i></li>
-	<li>URL da API para retornar os posts de um determinado usuário: <i>{URL}{URL}/users/{id}/posts</i></li>
+	<li>URL da API para retornar os posts de um determinado usuário: <i>{URL}/users/{id}/posts</i></li>
 	
 </ol>
