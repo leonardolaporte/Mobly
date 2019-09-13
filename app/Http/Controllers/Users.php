@@ -8,10 +8,33 @@ use App\Company;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Controller
 {
 	private $users_data_url = "http://jsonplaceholder.typicode.com/users";
+	
+	
+	public function all() {
+		$db = 	DB::table('users')->
+					join('companies', 'users.company_id', '=', 'companies.id')->
+					join('addresses', 'users.address_id', '=', 'addresses.id')->
+					select('users.*', 'companies.name AS company_name', 'addresses.*')->
+					get();
+		
+		return $db;
+	}
+	
+	public function search($id) {
+		$db = 	DB::table('users')->
+					join('companies', 'users.company_id', '=', 'companies.id')->
+					join('addresses', 'users.address_id', '=', 'addresses.id')->
+					select('users.*', 'companies.name AS company_name', 'addresses.*')->
+					where('users.id', $id)->
+					get();
+		
+		return $db;
+	}
 	
     public function import() {
 		$i = 0;

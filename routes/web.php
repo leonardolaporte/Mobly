@@ -16,3 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/users/import', 'Users@import');
+Route::get('/posts/import', 'Posts@import');
+
+Route::get('/users', 'Users@all');
+Route::get('/users/{id}', 'Users@search');
+Route::get('/users/{id}/posts', 'Posts@search');
