@@ -25,8 +25,12 @@ Passos para deploy:
 </ol>
 
 Frontend: http://18.231.192.113:3000/
+
 Retorno de Usuários: http://18.231.192.113/mobly/public/users
+
 Retorno de Usuário específico: http://18.231.192.113/mobly/public/users/3
+
 Retorno de Posts: http://18.231.192.113/mobly/public/users/3/posts
+
 
 Observaçoes: O modo rewrite do servidor deve estar ativo.
