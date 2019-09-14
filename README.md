@@ -16,5 +16,8 @@ Passos para deploy:
 	<li>URL da API para retornar todos os usuários: <i>{URL}/users</i></li>
 	<li>URL da API para retornar um usuário específico: <i>{URL}/users/{id}</i></li>
 	<li>URL da API para retornar os posts de um determinado usuário: <i>{URL}/users/{id}/posts</i></li>
-	
+	<li>Acesse a pasta interface: <i>cd interface</i></li>
+	<li>Execute o npm para baixar as dependencias do React: <i>npm install</i></li>
+	<li>Abrir o arquivo interface/src/api.js e editar a URL do backend.</li>
+	<li>Execute o servidor React: <i>npm start</i></li>
 </ol>

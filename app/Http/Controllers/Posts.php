@@ -21,7 +21,7 @@ class Posts extends Controller
 		
 		$posts = json_decode(file_get_contents($this->posts_data_url), true);
 		foreach($posts as $post) {
-			$user_id = User::find($post['userId'])->id;
+			@$user_id = User::find($post['userId'])->id;
 			if(isset($user_id)) {
 				$post_insert = new Post;
 				$post_insert->user_id = $user_id;

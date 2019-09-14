@@ -14,12 +14,54 @@ class Users extends Controller
 {
 	private $users_data_url = "http://jsonplaceholder.typicode.com/users";
 	
+	public function destroy(Request $request, $id) {
+		$user = User::find($id);
+		if($user->delete()) { 
+			return "Usuário apagado com sucesso";
+		} else {
+			return false;
+		}
+	}
+	
+	public function update(Request $request, $id) {
+		if(!$request->input("name") || !$request->input("username") || !$request->input("email")) return false;
+		
+		$user = User::find($id);
+		$user->name = $request->input("name");
+		$user->username = $request->input("username");
+		$user->email = $request->input("email");
+		$user->phone = $request->input("phone");
+		$user->website = $request->input("website");
+		if($user->save()) { 
+			return "Usuário editado com sucesso";
+		} else {
+			return false;
+		}	
+				
+	}
+	
+	public function store(Request $request) {
+		if(!$request->input("name") || !$request->input("username") || !$request->input("email")) return false;
+		
+		$user = new User;
+		$user->name = $request->input("name");
+		$uses->username = $request->input("username");
+		$user->email = $request->input("email");
+		$user->phone = $request->input("phone");
+		$user->website = $request->input("website");
+		if($user->save()) { 
+			return "Usuário inserido com sucesso";
+		} else {
+			return false;
+		}
+		
+	}
 	
 	public function all() {
 		$db = 	DB::table('users')->
-					join('companies', 'users.company_id', '=', 'companies.id')->
-					join('addresses', 'users.address_id', '=', 'addresses.id')->
-					select('users.*', 'companies.name AS company_name', 'addresses.*')->
+					leftJoin('companies', 'users.company_id', '=', 'companies.id')->
+					leftJoin('addresses', 'users.address_id', '=', 'addresses.id')->
+					select('companies.name AS company_name', 'addresses.*', 'users.*')->
 					get();
 		
 		return $db;
@@ -27,9 +69,9 @@ class Users extends Controller
 	
 	public function search($id) {
 		$db = 	DB::table('users')->
-					join('companies', 'users.company_id', '=', 'companies.id')->
-					join('addresses', 'users.address_id', '=', 'addresses.id')->
-					select('users.*', 'companies.name AS company_name', 'addresses.*')->
+					leftJoin('companies', 'users.company_id', '=', 'companies.id')->
+					leftJoin('addresses', 'users.address_id', '=', 'addresses.id')->
+					select('companies.name AS company_name', 'addresses.*', 'users.*')->
 					where('users.id', $id)->
 					get();
 		

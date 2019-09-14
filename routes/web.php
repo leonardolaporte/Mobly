@@ -21,3 +21,11 @@ Route::get('/posts/import', 'Posts@import');
 Route::get('/users', 'Users@all');
 Route::get('/users/{id}', 'Users@search');
 Route::get('/users/{id}/posts', 'Posts@search');
+
+Route::post('/users', 'Users@store');
+Route::post('/users/{id}', 'Users@update');
+
+Route::delete('/users/{id}', 'Users@destroy');
+
+
+Route::get('/posts/{id}', 'Posts@search');
